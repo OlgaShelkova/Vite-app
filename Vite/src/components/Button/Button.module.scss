@@ -1,0 +1,51 @@
+@import "../../style/_vars.scss";
+
+.button {
+  width: 45%;
+  font-family: $button-text;
+  font-size: $buttonFs;
+  text-transform: uppercase;
+  color: $darkPurpleFc;
+  border: none;
+  margin: 0 auto;
+  border-radius: $bR;
+  padding: 10px 15px;
+  border: solid 1px $darkPurpleBg;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.yellow_button {
+    background-color: $yellowBg;
+
+    &:hover {
+      background-color: darken($yellowBg, 10%);
+    }
+  }
+
+  &.pink_button {
+    background-color: $pinkBg;
+
+    &:hover {
+      background-color: darken($pinkBg, 10%);
+    }
+  }
+  &.green_button {
+    background-color: #67E667
+  ;
+
+    &:hover {
+      background-color: darken(#67E667, 10%);
+    }
+  }
+    &.red_button {
+      background-color: #FF7373;
+  
+      &:hover {
+        background-color: darken(#FF7373, 10%);
+      }
+    }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+

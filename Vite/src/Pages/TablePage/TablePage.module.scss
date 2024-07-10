@@ -1,0 +1,33 @@
+@import "../../style/_vars.scss";
+
+.table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $darkPurpleFc;
+  font-size: $tableFs;
+  font-family: $table-text;
+
+  .container {
+    width: 60%;
+    background-color: #d2c0ea;
+    border: $tableBorder;
+    border-radius: $bR;
+    padding: 10px;
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+
+    th:nth-child(-n + 3),
+    td:nth-child(-n + 3) {
+      width: 20%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 40%;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../style/_vars.scss";
+
+header {
+  padding: 10px;
+  background-color: $darkPurpleBg;
+  color: $yellowFc;
+  font-size: $headerFs;
+  font-family: $header-text;
+
+  .container {
+    margin-top: 10px;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  .logo {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-style: normal;
+    .logoImg {
+      width: 10%;
+      opacity: 0.75;
+    }
+  }
+  .nav {
+    text-align: end;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+
+      li {
+        display: inline-block;
+
+        a {
+          text-decoration: none;
+          margin-right: 20px;
+          color: $yellowFc;
+          transition: border 0.3s ease;
+
+          &:hover {
+            border: $textBorder;
+            border-radius: $bR;
+          }
+        }
+      }
+    }
+  }
+}

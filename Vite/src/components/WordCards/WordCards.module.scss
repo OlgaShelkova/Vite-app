@@ -1,0 +1,85 @@
+@import "../../style/_vars.scss";
+
+.word_card_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 30px;
+  font-size: $textFs;
+
+  .word_card {
+    position: relative;
+    border: solid 4px $darkPurpleBg;
+    border-radius: $bR;
+    padding: 150px;
+    width: 400px;
+    height: 400px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .word_item {
+      align-items: center;
+
+      h3 {
+        font-family: $header-text;
+        color: $purpleFc;
+        font-size: $headerFs;
+        padding: 10px;
+      }
+
+      p {
+        font-family: $header-text;
+        color: $darkPurpleFc;
+        font-size: $textFs;
+        padding: 10px;
+      }
+    }
+  }
+
+  button {
+    background-color: $pinkBg;
+    color: $darkPurpleFc;
+    border: solid 1px $darkPurpleBg;
+    border-radius: $bR;
+    padding: 8px 20px;
+    font-size: $buttonFs;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .button_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 400px;
+  }
+
+  .prev_button,
+  .next_button {
+    background-color: $pinkBg;
+    color: $darkPurpleFc;
+    border: solid 1px $darkPurpleBg;
+    border-radius: $bR;
+    padding: 8px 20px;
+    font-size: $buttonFs;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .translation {
+    margin-top: $buttonFs;
+  }
+}
