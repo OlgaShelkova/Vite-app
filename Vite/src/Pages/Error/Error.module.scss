@@ -1,3 +1,5 @@
-&.error_button {
+@import "../../style/_vars.scss";
+
+.error_button {
     background-color: $pinkBg;
 }
