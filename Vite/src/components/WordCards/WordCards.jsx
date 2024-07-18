@@ -1,31 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import data from "../../data";
 import styles from "./WordCards.module.scss";
 
 const WordCards = () => {
-  // Создаем состояние для текущего индекса слова
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [showTranslation, setShowTranslation] = useState(false); // Создаем состояние для отображения перевода
-  const [buttonVisible, setButtonVisible] = useState(true); // Создаем состояние для видимости кнопок
+  const [showTranslation, setShowTranslation] = useState(false);
+  const [buttonVisible, setButtonVisible] = useState(true);
+  const [wordsLearned, setWordsLearned] = useState(0); // Используем useState для счетчика изученных слов
+  const translationButtonRef = useRef(null); // Ссылка на кнопку для фокуса
+
   const handleNextCard = () => {
-    const nextIndex = (currentWordIndex + 1) % data.length; // Вычисляем индекс следующего слова, используем остаток от деления для циклического перехода
+    const nextIndex = (currentWordIndex + 1) % data.length;
     setCurrentWordIndex(nextIndex);
     setShowTranslation(false);
     setButtonVisible(true);
   };
+
   const handlePrevCard = () => {
-    const prevIndex = (currentWordIndex - 1 + data.length) % data.length; // Вычисляем индекс предыдущего слова, используем остаток от деления для циклического перехода
+    const prevIndex = (currentWordIndex - 1 + data.length) % data.length;
     setCurrentWordIndex(prevIndex);
     setShowTranslation(false);
     setButtonVisible(true);
   };
+
   const handleClick = () => {
-    // Функция handleClick переключает видимость перевода слова и кнопок
-    setShowTranslation(!showTranslation);
+    setShowTranslation(true);
     setButtonVisible(false);
+    setWordsLearned((prevLearned) => prevLearned + 1); // Обновляем счетчик изученных слов
   };
+
+  useEffect(() => {
+    // Устанавливаем фокус на кнопку «Показать перевод» при рендеринге новой карточки
+    if (buttonVisible && translationButtonRef.current) {
+      translationButtonRef.current.focus();
+    }
+  }, [currentWordIndex, buttonVisible]);
+
   const currentWord = data[currentWordIndex];
-  // Если массив data пустой, отображается сообщение
+
   if (data.length === 0) {
     return (
       <p>
@@ -35,6 +47,7 @@ const WordCards = () => {
       </p>
     );
   }
+
   return (
     <div className={styles.word_card_container}>
       <div className={styles.button_container}>
@@ -44,10 +57,14 @@ const WordCards = () => {
       </div>
       <div className={styles.word_card}>
         <div key={currentWord.id} className={styles.word_item}>
+          <p>Количество изученных слов: {wordsLearned}</p>{" "}
+          {/* Используем useState для отображения */}
           <h3>{currentWord.english}</h3>
           <p>{currentWord.transcription}</p>
           {buttonVisible && (
-            <button onClick={handleClick}>Показать перевод</button>
+            <button onClick={handleClick} ref={translationButtonRef}>
+              Показать перевод
+            </button>
           )}
           {showTranslation && <p>{currentWord.russian}</p>}
         </div>
@@ -60,4 +77,5 @@ const WordCards = () => {
     </div>
   );
 };
+
 export default WordCards;

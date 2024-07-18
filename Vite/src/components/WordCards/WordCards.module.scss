@@ -12,9 +12,9 @@
     position: relative;
     border: solid 4px $darkPurpleBg;
     border-radius: $bR;
-    padding: 150px;
+    padding: 100px;  
     width: 400px;
-    height: 400px;
+    height: auto;  
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -23,6 +23,7 @@
 
     .word_item {
       align-items: center;
+      text-align: center; 
 
       h3 {
         font-family: $header-text;
@@ -60,7 +61,8 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-    width: 400px;
+    width: 100%; 
+    max-width: 400px; 
   }
 
   .prev_button,
@@ -80,6 +82,7 @@
   }
 
   .translation {
-    margin-top: $buttonFs;
+    margin-top: 20px; 
+    font-size: $textFs;
   }
 }
